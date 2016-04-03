@@ -1,4 +1,3 @@
-
 class InsertionSort
 
   def sort(array)
