@@ -5,19 +5,17 @@ class InsertionSort
     puts "================================================================================"
     puts "Sorting #{array}..."
     
-
     # Deep copy of array
 
     unsorted_array = array.map { |e| e.dup } 
-    puts unsorted_array
     new_array = []
 
 
-    stop = array.length+1
+    stop = unsorted_array.length
     puts "array length #{array.length}"
     puts "stop: #{stop}"
 
-    (1..stop).each do |i|
+    (0..stop-1).each do |i|
       insert = false
       puts "Outer Loop #{i}"
       puts "================================================================================"
@@ -28,13 +26,11 @@ class InsertionSort
         puts "New array: #{new_array}"
         puts "Unsorted array: #{unsorted_array}"
       else
-        (0..array.length).each do |index|
+        (0..new_array.length-1).each do |index|
           puts "Inner Loop: #{index}"
           puts "Array length: #{array.length}"
-
-          if unsorted_array.nil? || new_array.nil?
-            break
-          elsif unsorted_array[0] < new_array[index]
+# require "pry"; binding.pry
+          if unsorted_array[0] < new_array[index]
             insert = true
             puts "Inner Loop #{index}: adding '#{unsorted_array[0]}' to #{new_array} at #{index}"
             new_array.insert(index, unsorted_array[0])
@@ -43,13 +39,13 @@ class InsertionSort
             puts "New array: #{new_array}"
             puts "Unsorted array: #{unsorted_array}"
             break
-          else
-            puts "not less than"
           end
+
         end
         unless insert
           puts "No inserts, appending #{unsorted_array[0]}"
           new_array.push(unsorted_array[0])
+          break
         end
       end
     end
@@ -60,4 +56,12 @@ class InsertionSort
 
 end
 
+sorter = InsertionSort.new
+puts 'sorting: ["d", "b", "a", "c"]'
+sorter.sort(["d", "b", "a", "c"]) 
 
+sorter2 = InsertionSort.new
+array = ("a".."g").to_a.shuffle
+puts "sorting #{array}"
+sorter2.sort(array)
+ 

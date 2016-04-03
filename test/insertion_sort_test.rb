@@ -4,7 +4,6 @@ require "../lib/insertion_sort"
 
 class InsertionSortTest < Minitest::Test
   
-
   def test_that_insertion_class_created
     sorter = InsertionSort.new
     assert_equal sorter.class, InsertionSort
@@ -18,8 +17,8 @@ class InsertionSortTest < Minitest::Test
 
   def test_that_it_can_sort_generated_arrays
     sorter = InsertionSort.new
-    array = ("a".."z").to_a.shuffle
-    assert_equal ("a".."z").to_a, sorter.sort(array)
+    array = ("a".."g").to_a.shuffle
+    assert_equal ("a".."g").to_a, sorter.sort(array)
   end
 
 end
