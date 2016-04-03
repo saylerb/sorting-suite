@@ -17,7 +17,6 @@ class InsertionSortTest < Minitest::Test
   end
 
   def test_that_it_can_sort_generated_arrays
-    
     sorter = InsertionSort.new
     array = ("a".."z").to_a.shuffle
     assert_equal ("a".."z").to_a, sorter.sort(array)

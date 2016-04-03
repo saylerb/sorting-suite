@@ -1,45 +1,63 @@
 
-class BubbleSort
+class InsertionSort
 
   def sort(array)
     puts "================================================================================"
     puts "Sorting #{array}..."
-    new_array = array
-    stop = array.length-1
-    loop do 
-      swap = false
-      puts "Outer: #{new_array.inspect}"
-      (1..stop).each do |index|
-        if new_array[index-1] > new_array[index]
-          #puts ""
-          puts "Inner #{index}: #{new_array} swapping #{new_array[index-1]} with #{new_array[index]}..."
-          #puts ""
-          new_array[index - 1], new_array[index] = new_array[index] , new_array[index - 1]
-          swap = true
-        else
-          puts "Inner #{index}: #{new_array} nothing to swap."
+    
+
+    # Deep copy of array
+
+    unsorted_array = array.map { |e| e.dup } 
+    puts unsorted_array
+    new_array = []
+
+
+    stop = array.length+1
+    puts "array length #{array.length}"
+    puts "stop: #{stop}"
+
+    (1..stop).each do |i|
+      insert = false
+      puts "Outer Loop #{i}"
+      puts "================================================================================"
+      if new_array.length == 0
+        puts "Adding #{unsorted_array[0]} to new array."
+        new_array << unsorted_array[0] 
+        unsorted_array.shift
+        puts "New array: #{new_array}"
+        puts "Unsorted array: #{unsorted_array}"
+      else
+        (0..array.length).each do |index|
+          puts "Inner Loop: #{index}"
+          puts "Array length: #{array.length}"
+
+          if unsorted_array.nil? || new_array.nil?
+            break
+          elsif unsorted_array[0] < new_array[index]
+            insert = true
+            puts "Inner Loop #{index}: adding '#{unsorted_array[0]}' to #{new_array} at #{index}"
+            new_array.insert(index, unsorted_array[0])
+            unsorted_array.shift
+
+            puts "New array: #{new_array}"
+            puts "Unsorted array: #{unsorted_array}"
+            break
+          else
+            puts "not less than"
+          end
         end
-      end
-      stop -= 1
-      if not swap
-        puts "Breaking out of loop"
-        break
+        unless insert
+          puts "No inserts, appending #{unsorted_array[0]}"
+          new_array.push(unsorted_array[0])
+        end
       end
     end
 
-    puts "Sorted array: #{new_array}"
+    puts "sorted array: #{new_array}"
     new_array
   end
 
 end
 
 
-
-
-
-
-
-
-# sorter = BubbleSort.new
-# array = ("a".."g").to_a.shuffle
-# sorter.sort(array)
