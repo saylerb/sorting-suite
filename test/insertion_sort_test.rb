@@ -1,33 +1,25 @@
 require "minitest/autorun"
 require "minitest/pride"
-require "../lib/insertion_sort"
-
+require "./lib/insertion_sort"
+require "./test/test_helper"
 
 class InsertionSortTest < Minitest::Test
-
+  include TestHelpers
   def test_that_insertion_class_created
     sorter = SortingSuite::InsertionSort.new
     assert_equal sorter.class, SortingSuite::InsertionSort
   end
-  
+
   def test_insertion_sort
     sorter = SortingSuite::InsertionSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
 
-    def generate_alpha_arr(start, finish)
-    (start..finish).to_a.shuffle
-  end
-
-  def generate_num_arr(start, finish)
-    (start..finish).to_a.shuffle
-  end
-
   def test_that_insertion_class_created
     sorter = SortingSuite::InsertionSort.new
     assert_equal sorter.class, SortingSuite::InsertionSort
   end
-  
+
   def test_sort_a_short_array
     sorter = SortingSuite::InsertionSort.new
     array = generate_alpha_arr("a","d")
@@ -42,7 +34,7 @@ class InsertionSortTest < Minitest::Test
 
   def test_that_it_can_take_an_empty_array
     sorter = SortingSuite::InsertionSort.new
-    array = [] 
+    array = []
     assert_equal [], sorter.sort(array)
   end
 
