@@ -1,7 +1,6 @@
 class MergeSort
   def sort(array)
    # base case:an array of less than 2
-
     return array if array.length <= 1
     
     midpoint = (array.size/2)
@@ -32,7 +31,3 @@ class MergeSort
 
 end
 
-sorter = MergeSort.new
-array = ("a".."z").to_a.shuffle
-puts "sorting #{array}"
-puts "sorted array: #{sorter.sort(array).inspect}"
