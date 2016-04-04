@@ -14,37 +14,37 @@ class BubbleSortTest < Minitest::Test
   end
 
   def test_that_bubble_class_created
-    sorter = BubbleSort.new
-    assert_equal sorter.class, BubbleSort
+    sorter = SortingSuite::BubbleSort.new
+    assert_equal sorter.class, SortingSuite::BubbleSort
   end
   
   def test_sort_a_short_array
-    sorter = BubbleSort.new
+    sorter = SortingSuite::BubbleSort.new
     array = generate_alpha_arr("a","d")
     assert_equal array.sort, sorter.sort(array)
   end
 
   def test_that_it_can_sort_generated_arrays
-    sorter = BubbleSort.new
+    sorter = SortingSuite::BubbleSort.new
     array = generate_alpha_arr("a","z")
     assert_equal array.sort, sorter.sort(array)
   end
 
   def test_that_it_can_take_an_empty_array
-    sorter = BubbleSort.new
+    sorter = SortingSuite::BubbleSort.new
     array = [] 
     assert_equal [], sorter.sort(array)
   end
 
   def test_that_it_can_take_numbers
-    sorter = BubbleSort.new
+    sorter = SortingSuite::BubbleSort.new
     array = generate_num_arr(1, 10)
     assert_equal array.sort, sorter.sort(array)
   end
 
 
   def test_that_it_can_handle_duplicates
-    sorter = BubbleSort.new
+    sorter = SortingSuite::BubbleSort.new
     array = generate_alpha_arr("a", "z")
     array.concat(generate_alpha_arr("a", "z"))
     assert_equal array.sort, sorter.sort(array)
@@ -52,7 +52,7 @@ class BubbleSortTest < Minitest::Test
   end
 
   def test_that_it_can_sort_reversed_arrays
-    sorter = BubbleSort.new
+    sorter = SortingSuite::BubbleSort.new
     array = ("a".."z").to_a.reverse
     assert_equal array.sort, sorter.sort(array)
   end
