@@ -5,12 +5,12 @@ require "../lib/bubble_sort"
 class BubbleSortTest < Minitest::Test
   
 
-  def generate_alpha_arr
-    ("a".."z").to_a.shuffle
+  def generate_alpha_arr(start, finish)
+    (start..finish).to_a.shuffle
   end
 
-  def generate_num_arr
-    (0..9).to_a.shuffle
+  def generate_num_arr(start, finish)
+    (start..finish).to_a.shuffle
   end
 
 
@@ -19,15 +19,15 @@ class BubbleSortTest < Minitest::Test
     assert_equal sorter.class, BubbleSort
   end
   
-  def test_bubble_sort
+  def test_sort_a_short_array
     sorter = BubbleSort.new
-    puts 'sorting: ["d", "b", "a", "c"]'
-    assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
+    array = generate_alpha_arr("a","d")
+    assert_equal array.sort, sorter.sort(array)
   end
 
   def test_that_it_can_sort_generated_arrays
     sorter = BubbleSort.new
-    array = generate_alpha_arr 
+    array = generate_alpha_arr("a","z")
     assert_equal array.sort, sorter.sort(array)
   end
 
@@ -40,11 +40,9 @@ class BubbleSortTest < Minitest::Test
 
   def test_that_it_can_take_numbers
     sorter = BubbleSort.new
-    array = generate_num_arr 
+    array = generate_num_arr(1, 10)
     assert_equal array.sort, sorter.sort(array)
   end
-
-
 
 
   def test_that_it_can_handle_duplicates
