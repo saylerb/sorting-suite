@@ -12,7 +12,6 @@ class MergeSortTest < Minitest::Test
   
   def test_merge_sort
     sorter = SortingSuite::MergeSort.new
-    puts 'sorting: ["d", "b", "a", "c"]'
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
 
