@@ -12,7 +12,6 @@ class InsertionSortTest < Minitest::Test
   
   def test_insertion_sort
     sorter = SortingSuite::InsertionSort.new
-    puts 'sorting: ["d", "b", "a", "c"]'
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
 
