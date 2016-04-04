@@ -6,12 +6,12 @@ require "../lib/merge_sort"
 class MergeSortTest < Minitest::Test
 
   def test_that_merge_class_created
-    sorter = MergeSort.new
-    assert_equal sorter.class, MergeSort
+    sorter = SortingSuite::MergeSort.new
+    assert_equal sorter.class, SortingSuite::MergeSort
   end
   
   def test_merge_sort
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     puts 'sorting: ["d", "b", "a", "c"]'
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
@@ -25,37 +25,37 @@ class MergeSortTest < Minitest::Test
   end
 
   def test_that_merge_class_created
-    sorter = MergeSort.new
-    assert_equal sorter.class, MergeSort
+    sorter = SortingSuite::MergeSort.new
+    assert_equal sorter.class, SortingSuite::MergeSort
   end
   
   def test_sort_a_short_array
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = generate_alpha_arr("a","d")
     assert_equal array.sort, sorter.sort(array)
   end
 
   def test_that_it_can_sort_generated_arrays
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = generate_alpha_arr("a","z")
     assert_equal array.sort, sorter.sort(array)
   end
 
   def test_that_it_can_take_an_empty_array
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = [] 
     assert_equal [], sorter.sort(array)
   end
 
   def test_that_it_can_take_numbers
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = generate_num_arr(1, 10)
     assert_equal array.sort, sorter.sort(array)
   end
 
 
   def test_that_it_can_handle_duplicates
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = generate_alpha_arr("a", "z")
     array.concat(generate_alpha_arr("a", "z"))
     assert_equal array.sort, sorter.sort(array)
@@ -63,14 +63,14 @@ class MergeSortTest < Minitest::Test
   end
 
   def test_that_it_can_sort_reversed_arrays
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = ("a".."z").to_a.reverse
     assert_equal array.sort, sorter.sort(array)
   end
 
 
   def test_that_it_can_sort_generated_arrays
-    sorter = MergeSort.new
+    sorter = SortingSuite::MergeSort.new
     array = ("a".."g").to_a.shuffle
     assert_equal ("a".."g").to_a, sorter.sort(array)
   end
