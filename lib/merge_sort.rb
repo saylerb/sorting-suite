@@ -1,41 +1,38 @@
 class MergeSort
   def sort(array)
    # base case:an array of less than 2
-    if array.length < 2
-      array
-    else
-      midpoint = array.length/2
-      sorted_left = sort(array[0...midpoint])
-      sorted_right = sort(array[midpoint...array.length])
 
-      merge(sorted_left, sorted_right)
-    end
+    return array if array.length <= 1
     
+    midpoint = (array.size/2)
+    left_sort = sort(array[0...midpoint])
+    right_sort =  sort(array[midpoint..array.length])
+    merge(left_sort, right_sort)
+
   end
 
   def merge(left, right)
-    new_array = [] 
-    while left.length > 0 && right.length > 0 
-      if left.first < right.first 
-        new_array.concat(left.shift)
-        puts "new_array: #{new_array}"
+
+    new_array = []
+
+    until right.empty? && left.empty?
+      if right.empty?
+        new_array << left.shift 
+      elsif left.empty? 
+        new_array << right.shift
+      elsif left.first < right.first
+        new_array << left.shift
       else
-        new_array.concat(right.shift)
-        puts "new_array: #{new_array}"
+        new_array << right.shift
       end
-      
+
     end
-    puts "new_array: #{new_array.inspect}"
+    new_array
   end
-
-
-
 
 end
 
-
 sorter = MergeSort.new
-array = ("a".."g").to_a.shuffle
+array = ("a".."z").to_a.shuffle
 puts "sorting #{array}"
 puts "sorted array: #{sorter.sort(array).inspect}"
-
