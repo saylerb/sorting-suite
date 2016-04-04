@@ -13,7 +13,6 @@ class BubbleSortTest < Minitest::Test
     (start..finish).to_a.shuffle
   end
 
-
   def test_that_bubble_class_created
     sorter = BubbleSort.new
     assert_equal sorter.class, BubbleSort
@@ -31,7 +30,6 @@ class BubbleSortTest < Minitest::Test
     assert_equal array.sort, sorter.sort(array)
   end
 
-
   def test_that_it_can_take_an_empty_array
     sorter = BubbleSort.new
     array = [] 
@@ -46,12 +44,19 @@ class BubbleSortTest < Minitest::Test
 
 
   def test_that_it_can_handle_duplicates
-    skip
     sorter = BubbleSort.new
-    array = ("a".."z").to_a.shuffle
-    array = [] 
-    assert_equal [], sorter.sort(array)
+    array = generate_alpha_arr("a", "z")
+    array.concat(generate_alpha_arr("a", "z"))
+    assert_equal array.sort, sorter.sort(array)
+    # puts array.inspect
   end
+
+  def test_that_it_can_sort_reversed_arrays
+    sorter = BubbleSort.new
+    array = ("a".."z").to_a.reverse
+    assert_equal array.sort, sorter.sort(array)
+  end
+
 
 end
 

@@ -31,7 +31,7 @@ class InsertionSort
         new_array.push(unsorted_array.shift)
       end
     end
-    puts new_array.inspect
+    new_array
   end
 
 end
