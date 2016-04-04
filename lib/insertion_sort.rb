@@ -1,56 +1,37 @@
 class InsertionSort
 
   def sort(array)
-    puts "================================================================================"
-    puts "Sorting #{array}..."
     
-    # Deep copy of array
-
     unsorted_array = array.map { |e| e.dup } 
     new_array = []
+    iterator = 0
 
-
-    stop = unsorted_array.length
-    puts "array length #{array.length}"
-    puts "stop: #{stop}"
-
-    (0..stop-1).each do |i|
+    while new_array.length < array.length
+      iterator += 1
+      puts "Outer Loop #{iterator}"
       insert = false
-      puts "Outer Loop #{i}"
-      puts "================================================================================"
+
       if new_array.length == 0
-        puts "Adding #{unsorted_array[0]} to new array."
-        new_array << unsorted_array[0] 
-        unsorted_array.shift
-        puts "New array: #{new_array}"
-        puts "Unsorted array: #{unsorted_array}"
-      else
-        (0..new_array.length-1).each do |index|
-          puts "Inner Loop: #{index}"
-          puts "Array length: #{array.length}"
-# require "pry"; binding.pry
-          if unsorted_array[0] < new_array[index]
-            insert = true
-            puts "Inner Loop #{index}: adding '#{unsorted_array[0]}' to #{new_array} at #{index}"
-            new_array.insert(index, unsorted_array[0])
-            unsorted_array.shift
-
-            puts "New array: #{new_array}"
-            puts "Unsorted array: #{unsorted_array}"
-            break
-          end
-
-        end
-        unless insert
-          puts "No inserts, appending #{unsorted_array[0]}"
-          new_array.push(unsorted_array[0])
+        puts "Creating new array!"
+        new_array.unshift(unsorted_array.shift) 
+        puts "new_array: #{new_array}"
+      end
+      new_array.each_index do |index|
+        if unsorted_array[0] < new_array[index]
+          puts "Adding to array..."
+          new_array.insert(index, unsorted_array.shift)
+          puts "new_array: #{new_array}"
+          puts "unsorted: #{unsorted_array}"
+          insert = true 
           break
         end
       end
+      if not insert
+        puts "appending..."
+        new_array.push(unsorted_array.shift)
+      end
     end
-
-    puts "sorted array: #{new_array}"
-    new_array
+    puts new_array.inspect
   end
 
 end
@@ -60,7 +41,7 @@ puts 'sorting: ["d", "b", "a", "c"]'
 sorter.sort(["d", "b", "a", "c"]) 
 
 sorter2 = InsertionSort.new
-array = ("a".."g").to_a.shuffle
+array = ("a".."z").to_a.shuffle
 puts "sorting #{array}"
 sorter2.sort(array)
  
